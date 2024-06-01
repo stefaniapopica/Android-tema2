@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginTop="15dp">
+
+    <EditText
+        android:id="@+id/animalNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name of an Animal ..."
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/black_border"
+        android:textColorHint="#808080"/>
+
+    <EditText
+        android:id="@+id/continentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Continent ..."
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/black_border"
+        android:textColorHint="#808080"/>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:padding="10dp"
+        android:background="@drawable/black_border"/>
+</LinearLayout>
