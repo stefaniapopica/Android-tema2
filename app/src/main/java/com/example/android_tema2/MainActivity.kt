@@ -1,36 +1,45 @@
 package com.example.android_tema2
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.android_tema2.ui.theme.Android_tema2Theme
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : ComponentActivity() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var animalAdapter: AnimalAdapter
+    private val animalList = mutableListOf<Animal>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        val animalNameEditText: EditText = findViewById(R.id.animalNameEditText)
+        val continentEditText: EditText = findViewById(R.id.continentEditText)
+        val addButton: Button = findViewById(R.id.addButton)
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Android_tema2Theme {
-        Greeting("Android")
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        animalAdapter = AnimalAdapter(animalList) { animal ->
+            animalList.remove(animal)
+            animalAdapter.notifyDataSetChanged()
+        }
+
+        recyclerView.adapter = animalAdapter
+
+        addButton.setOnClickListener {
+            val animalName = animalNameEditText.text.toString()
+            val continent = continentEditText.text.toString()
+            if (animalName.isNotEmpty() && continent.isNotEmpty()) {
+                val animal = Animal(animalName, continent)
+                animalList.add(animal)
+                animalAdapter.notifyDataSetChanged()
+                animalNameEditText.text.clear()
+                continentEditText.text.clear()
+            }
+        }
     }
 }
