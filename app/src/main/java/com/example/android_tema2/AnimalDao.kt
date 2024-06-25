@@ -12,7 +12,7 @@ interface AnimalDao {
     @Query("SELECT * FROM animals")
     fun getAll(): List<Animal>
 
-    @Query("SELECT * FROM animals WHERE name = :name LIMIT 1")
+    @Query("SELECT * FROM animals WHERE LOWER(name) = LOWER(:name) LIMIT 1")
     fun getAnimalByName(name: String): Animal?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

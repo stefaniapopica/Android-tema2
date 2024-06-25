@@ -4,42 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="4dp"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="10dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="16dp"
         android:background="@drawable/gradient_background">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/animalNameTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:text="Name of an animal"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"/>
 
-            <TextView
-                android:id="@+id/animalNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name of an Animal"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/continentTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Continent"
-                android:textSize="18sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/continentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/animalNameTextView"
+            android:layout_marginTop="6dp"
+            android:text="Continent"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"/>
 
         <ImageButton
             android:id="@+id/deleteButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/delete_button_selector"/>
-    </LinearLayout>
+            android:layout_width="40dp"
+            android:layout_height="37dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/delete_button_selector" />
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
